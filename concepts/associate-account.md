@@ -10,7 +10,8 @@ To authenticate your applications using Microsoft Azure Active Directory (Azure 
 
 This article shows you how to associate your Office 365 account with Azure AD to create and manage apps.
 
- >**Note:** This article uses Azure AD as the authentication provider for your app. If you're using the Azure AD v2.0 endpoint, you don't need to perform this step. For more information, see [App authentication with Microsoft Graph](auth-overview.md).
+ > [!NOTE]
+ > This article uses Azure AD as the authentication provider for your app. If you're using the Azure AD v2.0 endpoint, you don't need to perform this step. For more information, see [App authentication with Microsoft Graph](auth-overview.md).
 
 ## Prerequisites
 
@@ -47,7 +48,8 @@ If you don't have an existing Office 365 for business account, you can:
 	
 	You will be prompted whether to use your directory with Azure. 
 	
-	>**Important:** To associate your Office 365 account with Azure AD, you'll need  an Office 365 business account with global administrator privileges. 
+	> [!IMPORTANT]
+	> To associate your Office 365 account with Azure AD, you'll need  an Office 365 business account with global administrator privileges. 
 	
 	    
 4. Select  **continue**, and then **Sign out now**.
@@ -66,7 +68,8 @@ If you don't have an existing Office 365 for business account, you can:
 1. Log on to Office 365. From the **Home** page, select the **Admin** icon to open the Office 365 admin center.
 2. In the menu page along the left side of the page, scroll down to **Admin** and select **Azure AD**.
 
-	>**Important:** To open the Office 365 admin center, and access Azure AD, you'll need  an Office 365 business account with global administrator privileges. 
+	> [!IMPORTANT]
+	> To open the Office 365 admin center, and access Azure AD, you'll need  an Office 365 business account with global administrator privileges. 
 	
 3. Create a new subscription.
 		
@@ -90,3 +93,13 @@ If you don't have an existing Office 365 for business account, you can:
 ## See also
 - [Basics of Registering an Application in Azure AD](https://azure.microsoft.com/en-us/documentation/articles/active-directory-authentication-scenarios/#basics-of-registering-an-application-in-azure-ad)
 - [Add, update, or remove an application in Azure AD](https://azure.microsoft.com/en-us/documentation/articles/active-directory-integrating-applications/)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/associate-account.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)",
+    "Error: /concepts/associate-account.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !IMPORTANT\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->
