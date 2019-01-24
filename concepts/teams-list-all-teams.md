@@ -22,7 +22,8 @@ Since groups are large objects, use $select to only get the properties of the gr
 GET /groups?$select=id,resourceProvisioningOptions
 ```
 
-> **Note**: Certain unused old teams will not have resourceProvisioningOptions set. For details, see [known issues](known-issues.md#missing-teams-in-list-all-teams).
+> [!NOTE]
+> Certain unused old teams will not have resourceProvisioningOptions set. For details, see [known issues](known-issues.md#missing-teams-in-list-all-teams).
 
 The following is an example of the response. 
 
@@ -56,13 +57,16 @@ Using the beta APIs, you can use $filter to return only the groups that have tea
 GET /groups?$filter=resourceProvisioningOptions/Any(x:x eq 'Team')
 ```
 
-> **Note**: $filter on /groups is only available through the beta endpoint. resourceProvisioningOptions is available in v1.0 and beta.
+> [!NOTE]
+> $filter on /groups is only available through the beta endpoint. resourceProvisioningOptions is available in v1.0 and beta.
 
-> **Note**: Certain unused old teams will not be listed. For details, see [known issues](known-issues.md#missing-teams-in-list-all-teams).
+> [!NOTE]
+> Certain unused old teams will not be listed. For details, see [known issues](known-issues.md#missing-teams-in-list-all-teams).
 
 The following is an example of the response. 
 
->**Note:** The response object shown might be shortened for readability. All the properties will be returned from an actual call.
+> [!NOTE]
+> The response object shown might be shortened for readability. All the properties will be returned from an actual call.
 
 ```http
 HTTP/1.1 200 OK
@@ -119,7 +123,8 @@ GET /teams/{group-id}
 
 The following example shows the response.
 
->**Note:** The response object shown here might be shortened for readability. All the properties will be returned from an actual call.
+> [!NOTE]
+> The response object shown here might be shortened for readability. All the properties will be returned from an actual call.
 <!-- {
   "blockType": "ignored",
   "truncated": true,
@@ -163,3 +168,12 @@ Content-length: 401
 
 - [List joinedTeams](/graph/api/user-list-joinedteams?view=graph-rest-beta)
 - [List groups](/graph/api/group-list?view=graph-rest-beta)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/teams-list-all-teams.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

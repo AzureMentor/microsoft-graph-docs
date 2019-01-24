@@ -86,7 +86,8 @@ If you're building an application that will support Azure AD users, and you do n
 ### Step 4: Configure support for cross-platform push notifications (optional) 
 If you've opted to configure your cross-device app in the Windows Dev Center, you can enable support for cross-platform push notifications by providing the credentials you use with the APIs for Android and iOS push messaging platforms. These are required if you're using the Project Rome SDKs for iOS and Android and you want to do more than publish user activities. If you're using Project Rome APIs for Microsoft Graph only, you don't need to perform this step. You can associate up to 10 sets of credentials per platform. 
 
->**Important:** Do not store push notification credentials in an externally hosted JSON file.
+> [!IMPORTANT]
+> Do not store push notification credentials in an externally hosted JSON file.
 
 To find the IDs:
 
@@ -160,7 +161,8 @@ To enable cross-device experiences, your app users must sign in with either a M
 
 You can find your existing app ID/client IDs or provision new ones by signing in to the [Application Registration Portal](https://apps.dev.microsoft.com) with your developer account. When you sign in, you can view the App ID/client ID for any of your apps. Both Live SDK (hex values) and converged app IDs (GUIDs) are supported. Use the platform type "msa" when you add the IDs used to enable support for a Microsoft account or Azure AD, as shown in the previous example.  
 
->**Note:** If you're building an application that supports Azure AD users, and you do not use a converged application ID issued through the [Application Registration Portal](https://apps.dev.microsoft.com), you will need to provide the GUID for the application ID of your Azure app. This type of ID should also be configured as platform type "msa". 
+> [!NOTE]
+> If you're building an application that supports Azure AD users, and you do not use a converged application ID issued through the [Application Registration Portal](https://apps.dev.microsoft.com), you will need to provide the GUID for the application ID of your Azure app. This type of ID should also be configured as platform type "msa". 
 
 To find the GUID in the Azure Portal for your tenant: 
 
@@ -202,3 +204,13 @@ The activity feed API ingests the cross-device app configuration asynchronously,
 
 ### Platform will not initialize on Android or iOS
 The device relay API for Android or iOS requires the cross-device app configuration in order to instantiate connections to the Android or iOS app. In the event that the platform fails to initialize successfully, make sure you have correctly identified the Microsoft account app IDs and push notification credentials used to configure your cross-device app in the Windows Dev Center, and configure your client apps' host value with the domain that identifies your cross-device app. 
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/cross-device-app-configuration.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)",
+    "Error: /concepts/cross-device-app-configuration.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !IMPORTANT\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

@@ -31,7 +31,8 @@ Apply the following best practices for consent and authorization in your app:
 
 - **Use the correct permission type based on scenarios**. If you're building an interactive application where a signed in user is present, your application should use *delegated* permissions, where the application is delegated permission to act as the signed-in user when making calls to Microsoft Graph. If, however, your application runs without a signed-in user, such as a background service or daemon, your application should use application permissions.
 
-    >**Note:** Using application permissions for interactive scenarios can put your application at compliance and security risk. It can inadvertantly elevate a user's privileges to access data, circumnavigating policies configured by an administrator.
+    > [!NOTE]
+    > Using application permissions for interactive scenarios can put your application at compliance and security risk. It can inadvertantly elevate a user's privileges to access data, circumnavigating policies configured by an administrator.
 <!-- LG: Use a more clear lead-in here, like "Consider the end user and admin experience"? -->
 - **Be thoughtful when configuring your app**. This will directly affect end user and admin experiences, along with application adoption and security. For example:
 
@@ -64,7 +65,8 @@ Would return a response containing an `@odata.nextLink` property, if the result 
 "@odata.nextLink": "https://graph.microsoft.com/v1.0/me/messages?$skip=23"
 ```
 
->**Note:** Your application should **always** handle the possibility that the responses are paged in nature, and use the `@odata.nextLink` property to obtain the next paged set of results, until all pages of the result set have been read. The final page will not contain an `@odata.nextLink` property. You should include the entire URL in the `@odata:nextLink` property in your request for the next page of results, treating the entire URL as an opaque string.
+> [!NOTE]
+> Your application should **always** handle the possibility that the responses are paged in nature, and use the `@odata.nextLink` property to obtain the next paged set of results, until all pages of the result set have been read. The final page will not contain an `@odata.nextLink` property. You should include the entire URL in the `@odata:nextLink` property in your request for the next page of results, treating the entire URL as an opaque string.
 
 For more details, see [paging](paging.md).
 
@@ -84,7 +86,8 @@ While your application should handle all error responses (in the 400 and 500 ran
 Client applications can be broken by the addition of members to an existing enum. For some newer enums in Microsoft Graph, a mechanism is available to allow for adding new members without incurring a breaking change. On these newer enums, you'll see a common *sentinel* member called `unknownFutureValue` that demarcates known and unknown enum members. Known members will have a number less than the sentinel member, while unknown members will be greater in value.
 By default, unknown members are not returned by Microsoft Graph. If, however, your application is written to handle the appearance of unknown members, it can opt-in to receive unknown enum members, using an HTTP *Prefer* request header.
 
->**Note:** If your application is prepared to handle unknown enum members, it should opt-in by using an HTTP *prefer* request header: `Prefer: include-unknown-enum-members`.
+> [!NOTE]
+> If your application is prepared to handle unknown enum members, it should opt-in by using an HTTP *prefer* request header: `Prefer: include-unknown-enum-members`.
 
 
 ## Storing data locally
@@ -99,7 +102,8 @@ In general, for performance and even security or privacy reasons, you should onl
 
 Choose only the properties your application really needs and no more, because this saves unnecessary network traffic and data processing in your application (and in the service).
 
->**Note:** Use the `$select` query parameter to limit the properties returned by a query to those needed by your application.
+> [!NOTE]
+> Use the `$select` query parameter to limit the properties returned by a query to those needed by your application.
 
 For example, when retrieving the messages of the signed-in user, you can specify that only the **from** and **subject** properties be returned:
 
@@ -111,7 +115,8 @@ GET https://graph.microsoft.com/v1.0/me/messages?$select=from,subject
 
 For some operations, such as PUT and PATCH (and in some cases POST), if your application doesn't need to make use of a response payload, you can ask the API to return minimal data. Note that some services already return a 204 No Content response for PUT and PATCH operations.
 
->**Note:** Request minimal representation responses using an HTTP request header where appropriate: *Prefer: return=minimal*. Note that for creation operations, this might not be appropriate because your application may expect to get the service generated `id` for the newly created object in the response.
+> [!NOTE]
+> Request minimal representation responses using an HTTP request header where appropriate: *Prefer: return=minimal*. Note that for creation operations, this might not be appropriate because your application may expect to get the service generated `id` for the newly created object in the response.
 
 ### Track changes: delta query and webhook notifications
 
@@ -143,3 +148,12 @@ To ensure reliability and facilitate support for your application:
 - Generate a unique GUID and send it on each Microsoft Graph REST request. This will help Microsoft investigate any errors more easily if you need to report an issue with Microsoft Graph.
   - On every request to Microsoft Graph, generate a unique GUID, send it in the `client-request-id` HTTP request header, and also log it in your application's logs.
   - Always log the `request-id`, `timestamp` and `x-ms-ags-diagnostic` from the HTTP response headers. These, together with the `client-request-id`, are required when reporting issues in [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoft-graph) or to Microsoft Support.
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/best-practices-concept.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

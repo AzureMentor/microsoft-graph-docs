@@ -16,7 +16,8 @@ Microsoft Graph offers two types of extensions. Choose the extension type that b
 - **Open extensions**: A good way for developers to get started.
 - **Schema extensions**: A more versatile mechanism for developers who care about storing typed data, making their schema discoverable and shareable, being able to filter, and in the future, being able to perform input data validation and authorization.
 
-> **Important:** You should not use extensions to store sensitive personally identifiable information, such as account credentials, government identification numbers, cardholder data, financial account data, healthcare information, or sensitive background information.
+> [!IMPORTANT]
+> You should not use extensions to store sensitive personally identifiable information, such as account credentials, government identification numbers, cardholder data, financial account data, healthcare information, or sensitive background information.
 
 ## Supported resources
 
@@ -106,7 +107,8 @@ The following data types are supported when defining a property in a schema exte
 | Integer | 32-bit value. Not supported for messages, events and posts. |
 | String | 256 characters maximum. |
 
-> **Note:** Multi-value properties are not supported.
+> [!NOTE]
+> Multi-value properties are not supported.
 
 ### Azure AD directory schema extensions
 
@@ -150,3 +152,13 @@ For known limitations using extensions, see the [extensions section](known-issue
 - [Office 365 domains](https://technet.microsoft.com/en-us/library/office-365-domains.aspx)
 
 - [Adding and verifying a domain for an Office 365 tenant](https://office365support.ca/adding-and-verifying-a-domain-for-the-new-office-365/)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/extensibility-overview.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)",
+    "Error: /concepts/extensibility-overview.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !IMPORTANT\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

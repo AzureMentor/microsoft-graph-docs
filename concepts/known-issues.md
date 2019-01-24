@@ -174,7 +174,8 @@ Currently, the **onlineMeetingUrl** property of a Skype meeting [event](/graph/a
 
 ## Calls and online meetings
 
-> **Note** Calling and online meetings are currently in preview and are available only in the Microsoft Graph beta endpoint.
+> [!NOTE]
+> Calling and online meetings are currently in preview and are available only in the Microsoft Graph beta endpoint.
 
 - Navigation path `/applications/{id}` is not supported. Navigating through the global applications node to the application, even your own, is not allowed. Please use the `/app` navigation only.
 
@@ -363,7 +364,8 @@ We are working to fix this issue as soon as possible, so that pre-consent will w
 
 In the meantime, to unblock development and testing you can use the following workaround.
 
->**NOTE:** This is not a permanent solution and is only intended to unblock development.  This workaround will not be required once the aforementioned issue is fixed.  This workaround does not need to be undone once the fix is in place.
+> [!NOTE]
+> This is not a permanent solution and is only intended to unblock development.  This workaround will not be required once the aforementioned issue is fixed.  This workaround does not need to be undone once the fix is in place.
 
 1. Open an Azure AD v2 PowerShell session and connect to your `customer` tenant by entering your admin credentials into the sign-in window. You can download and install Azure AD PowerShell V2 from [here](https://www.powershellgallery.com/packages/AzureAD).
 
@@ -384,3 +386,12 @@ Some functionality is not yet available in Microsoft Graph. If you don't see the
 ## Feedback
 
 > Your feedback is important to us. Connect with us on [Stack Overflow](https://stackoverflow.com/questions/tagged/microsoftgraph).
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/known-issues.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

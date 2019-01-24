@@ -20,7 +20,8 @@ The first part of a recurrence is the pattern. This specifies how often the even
 
 Depending on the type of pattern, certain fields of the **recurrencePattern** are required, optional, or ignored.
 
-> **Note**: Even if a field is ignored, it is still validated. If a field has a set list of possible values, using a value outside the allowed set causes an error, even if that field is ignored.
+> [!NOTE]
+> Even if a field is ignored, it is still validated. If a field has a set list of possible values, using a value outside the allowed set causes an error, even if that field is ignored.
 
 Let's take a look at each of the possible pattern types.
 
@@ -220,7 +221,8 @@ The second part of a recurrence is the range. This specifies how long the patter
 
 Depending on the type of range, certain fields of **recurrenceRange** are required or ignored.
 
-> **Note**: Even if a field is ignored, it is still validated. If a field has a set list of possible values, using a value outside the allowed set causes an error, even if that field is ignored.
+> [!NOTE]
+> Even if a field is ignored, it is still validated. If a field has a set list of possible values, using a value outside the allowed set causes an error, even if that field is ignored.
 
 Let's take a look at each of the possible range types.
 
@@ -354,3 +356,12 @@ To create a recurrence rule, you must specify both a pattern and a range. Any pa
 ## Next steps
     
 Find out more about [integrating with Outlook calendar](outlook-calendar-concept-overview.md).
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/outlook-schedule-recurring-events.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

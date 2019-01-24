@@ -21,7 +21,8 @@ For this scenario, we're going to show you how to:
 4. Add, update, or remove custom data in an existing group based on a schema extension definition.
 5. Read back a group and the extension data.
 
->**Note:** This topic shows you how to create and read schema extension values on a **group** resource (steps 3-5).  The same methods are supported for the 
+> [!NOTE]
+> This topic shows you how to create and read schema extension values on a **group** resource (steps 3-5).  The same methods are supported for the 
 **administrativeUnit**, **device**, **event**, **message**, **organization**, **post**, and **user** 
 resource types as well.  So you can carry out similar operations as the example requests below on any of those resources. Note that **administrativeUnit** is 
 available only in the beta endpoint.
@@ -258,3 +259,12 @@ Content-length: 326
 - [Get schemaExtension](/graph/api/schemaextension-get?view=graph-rest-1.0)
 - [Update schemaExtension](/graph/api/schemaextension-update?view=graph-rest-1.0)
 - [Delete schemaExtension](/graph/api/schemaextension-delete?view=graph-rest-1.0)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/extensibility-schema-groups.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

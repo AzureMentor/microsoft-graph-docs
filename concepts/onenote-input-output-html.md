@@ -92,7 +92,7 @@ Contains a non-contributing, nested div.
 
 #### Output HTML
 
-> **Note:**
+> [!NOTE]
 > The div's content was moved to the parent div and the nested `<div>` tags have been removed. The div would have been preserved if it defined any semantic information, such as a **data-id** (example: `<div data-id="keep-me">`).
 
 ```html
@@ -126,7 +126,7 @@ Images on OneNote pages are represented by **img** elements. An **img** element 
 | src |Either **src** or **data-render-src** is required.<br/><br/>The image to render on the OneNote page:<br/><br/>- `src="https://..."` for a URL to a publicly available image on the Internet.<br/><br/> - `src="name:BlockName"` for a named part in a multipart request that represents the image.|
 | width, height | The width or height of the image, in pixels but without the px. Example: `width="400"` |
  
-> **Note:** 
+> [!NOTE]
 > The OneNote APIs automatically detect the input image type, and return it as the **data-fullres-src-type** in the output HTML. The API also returns the image type of the optimized image in **data-src-type**.
  
 
@@ -250,7 +250,7 @@ Because users can move the images on the page, the returned indexes might be out
 
 OneNote pages can contain embedded videos represented by **iframe** elements. 
 
-> **Note:** 
+> [!NOTE]
 > You can also [attach a video file using an **object** element](onenote-images-files.md#adding-files).
 
 #### Input attributes
@@ -283,7 +283,7 @@ Output **iframe** elements contain endpoints that link to the source page and vi
 
 OneNote pages can contain file attachments represented by **object** elements. An **object** element can contain the following attributes in the input and output HTML.
 
-> **Note:** 
+> [!NOTE]
 > The OneNote APIs can also render file content as images in a page when the file is sent as an image and uses the **data-render-src** attribute.
 > Example: `<img data-render-src="name:part-name" ... />`
  
@@ -597,7 +597,7 @@ This is the input HTML sent in the message body to create the page.
 
 This is the output HTML that Microsoft Graph returns when you [get page content](onenote-get-content.md).
 
-> **Note:** 
+> [!NOTE]
 > When you [create a page](onenote-create-page.md) or [get page metadata](/graph/api/page-get?view=graph-rest-1.0), the API returns the *content* endpoint URL of the page in the **contentUrl** property.
 
 ```html
@@ -642,3 +642,12 @@ This is the output HTML that Microsoft Graph returns when you [get page content]
 - [Create OneNote pages](onenote-create-page.md)
 - [Update OneNote page content](onenote-update-page.md)
 - [Add images, videos, and files](onenote-images-files.md)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/onenote-input-output-html.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

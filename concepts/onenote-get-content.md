@@ -37,7 +37,8 @@ Your full request URI will look like one of these examples:
 - `https://graph.microsoft.com/v1.0/me/onenote/notes/pages`
 - `https://graph.microsoft.com/v1.0/me/onenote/pages?select=title,self`
 
-> **Note:** Learn more about the [service root URL](/graph/api/resources/onenote-api-overview?view=graph-rest-1.0#root-url).
+> [!NOTE]
+> Learn more about the [service root URL](/graph/api/resources/onenote-api-overview?view=graph-rest-1.0#root-url).
 
 <a name="resource-paths"></a>
 
@@ -316,7 +317,7 @@ And an **object** tag includes the endpoint for the file resource in the **data*
 
 To get public, pre-authenticated URLs to the image resources on a page, include `preAuthenticated=true` in the query string when you [retrieve the page content](#page-html-content) (**example:**  `GET ../pages/{page-id}/content?preAuthenticated=true`). The public URLs that are returned in the [output HTML](onenote-input-output-html.md#output-html-examples-for-images) are valid for one hour. Without this flag, retrieved images won't render directly in a browser because they are private and require authorization to retrieve them, like the rest of the page contents. 
 
-> **Note:**
+> [!NOTE]
 > Getting a collection of resources is not supported. 
 
 When you get a file resource, you don't need to include an **Accept** content type in the request.
@@ -394,7 +395,7 @@ Get all notebooks and expand their sections and section groups, and expand all s
 [GET] ../notebooks?expand=sections,sectionGroups(expand=sections)
 ```
  
-> **Note:**
+> [!NOTE]
 > Expanding parents of child entities or expanding children of parent entities creates a circular reference and is not supported.
 
  
@@ -502,7 +503,7 @@ And the next five (`search` is available for consumer notebooks only).
 [GET] ../pages?search=biology&filter=createdTime ge 2015-01-01&top=5&skip=10
 ```
 
-> **Note:**
+> [!NOTE]
 > If both **search** and **filter** are applied to the same request, the results include only those entities that match both criteria.
  
 ### select
@@ -545,7 +546,7 @@ Get pages 51 to 100. The API returns 20 entries by default with a maximum of 100
 [GET] ../pages?skip=50&top=50&select=title,self&orderby=title
 ```
 
-> **Note:**
+> [!NOTE]
 > GET requests for pages that retrieve the default number of entries (that is, they don't specify a **top** expression) return an **@odata.nextLink** link in the response that you can use to get the next 20 entries.
  
 
@@ -555,7 +556,7 @@ Get pages 51 to 100. The API returns 20 entries by default with a maximum of 100
 
 When sending GET requests to Microsoft Graph, you can use OData query string options to customize your query and get just the information you need. They can also improve performance by reducing the number of calls to the service and the size of the response payload.
 
-> **Note:**
+> [!NOTE]
 > For readability, the examples in this article don't use the %20 percent-encoding required for spaces in the URL query string: `filter=isDefault%20eq%20true`
  
 | Query option | Example and description |  
@@ -705,3 +706,12 @@ For more information about permission scopes and how they work, see [Microsoft G
 - [OneNote Developer Blog](https://go.microsoft.com/fwlink/?LinkID=390183)
 - [OneNote development questions on Stack Overflow](https://go.microsoft.com/fwlink/?LinkID=390182)
 - [OneNote GitHub repos](https://go.microsoft.com/fwlink/?LinkID=390178)  
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/onenote-get-content.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

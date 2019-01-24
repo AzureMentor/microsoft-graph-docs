@@ -37,7 +37,8 @@ Absolutely! Each quick start download is based on a [Microsoft Graph tutorial](t
 - Build the code yourself by following the step-by-step tutorial.
 - Download the completed project from the corresponding GitHub repository and follow the instructions in the README to configure and run the sample.
 
-> **Note:** We are in the process of generating tutorials for each of the platforms that currently have a quick start. Some of the quick starts do not have corresponding tutorials yet.
+> [!NOTE]
+> We are in the process of generating tutorials for each of the platforms that currently have a quick start. Some of the quick starts do not have corresponding tutorials yet.
 
 #### Tutorials and GitHub repositories
 
@@ -68,3 +69,12 @@ If you have trouble getting the quick start to work properly, please open an iss
 ## Didn't find what you need?
 
 If this FAQ didn't address a question or problem you encountered with one or more of the quick starts, please let us know using the **Feedback** section below.
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/quick-start-faq.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

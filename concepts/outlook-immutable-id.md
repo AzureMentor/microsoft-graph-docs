@@ -10,7 +10,8 @@ ms.prod: "outlook"
 
 Outlook items (messages, events, contacts, tasks) have an interesting behavior that you've probably either never noticed or has caused you significant frustration: their IDs change. It doesn't happen often, only if the item is moved, but it can cause real problems for apps that store IDs offline for later use. Immutable identifiers enables your application to obtain an ID that does not change for the lifetime of the item.
 
-> **Important:** Immutable identifiers are only avaiable on the /beta version in Microsoft Graph.
+> [!IMPORTANT]
+> Immutable identifiers are only avaiable on the /beta version in Microsoft Graph.
 
 ## How it works
 
@@ -54,7 +55,8 @@ You can request that Microsoft Graph return immutable IDs in [delta query respon
 
 If you've already got a database filled with thousands of regular IDs, you can migrate those IDs to immutable format using the [translateExchangeIds](/graph/api/user-translateexchangeids?view=graph-rest-beta) function. You can provide an array of up to 1000 IDs to be translated into a target format.
 
-> **Note:** You can also use `translateExchangeIds` to migrate Exchange Web Services applications to Microsoft Graph.
+> [!NOTE]
+> You can also use `translateExchangeIds` to migrate Exchange Web Services applications to Microsoft Graph.
 
 ### Example
 
@@ -89,3 +91,13 @@ HTTP 200 OK
   ]
 }
 ```
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/outlook-immutable-id.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)",
+    "Error: /concepts/outlook-immutable-id.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !IMPORTANT\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

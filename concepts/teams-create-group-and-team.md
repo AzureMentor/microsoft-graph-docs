@@ -46,7 +46,8 @@ POST /groups
 
 The following example shows response. 
 
->**Note:** The response object shown might be shortened for readability. All the properties will be returned from an actual call.
+> [!NOTE]
+> The response object shown might be shortened for readability. All the properties will be returned from an actual call.
 
 ```http
 HTTP/1.1 200 OK
@@ -69,7 +70,8 @@ PUT /groups/{id}/team
 
 The following example shows the response. 
 
->**Note:** The response object shown might be shortened for readability. All the properties will be returned from an actual call.
+> [!NOTE]
+> The response object shown might be shortened for readability. All the properties will be returned from an actual call.
 
 ```http
 HTTP/1.1 200 OK
@@ -88,3 +90,12 @@ Content-length: xxx
 ```
 
 The created team has the same ID as the group.
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/teams-create-group-and-team.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

@@ -27,7 +27,8 @@ only if that minimum attendee availability is met.
 If **findMeetingTimes** cannot suggest any meeting times, it indicates a specific reason (**emptySuggestionsReason**), such as the organizer or a required attendee not available.
 Based on this value, you can better adjust the parameters and call **findMeetingTimes** again.
 
->**Note** The **findMeetingTimes** action is currently available to Office 365 work or school mailboxes, but not personal, outlook.com mailboxes.
+> [!NOTE]
+> The **findMeetingTimes** action is currently available to Office 365 work or school mailboxes, but not personal, outlook.com mailboxes.
 
 ## Example
 
@@ -256,3 +257,12 @@ After getting meeting time suggestions, you may want to:
 2. [Add an attachment](/graph/api/event-post-attachments?view=graph-rest-1.0) to the event.
 
 Find out more about [integrating with Outlook calendar](outlook-calendar-concept-overview.md).
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/findmeetingtimes-example.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

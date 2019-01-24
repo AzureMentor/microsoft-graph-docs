@@ -20,7 +20,8 @@ Behind the scenes, when Microsoft Graph identifies that a REST API call is attem
 mailbox in a hybrid deployment, it proxies the REST request to an on-premises REST endpoint which then processes
 the request. This discovery makes accessing the REST API possible.
 
->**Note:** The ability to use these REST APIs in hybrid deployments is currently in preview.
+> [!NOTE]
+> The ability to use these REST APIs in hybrid deployments is currently in preview.
 
 >Only v1.0 of the Mail, Calendar and Contacts API are available for mailboxes in hybrid deployments. Other v1.0 API sets, 
 such as the [Groups](/graph/api/resources/group?view=graph-rest-1.0) API, or APIs in other versions, 
@@ -56,3 +57,12 @@ IT administrators can find more information in the following resources:
 - [Exchange Server Hybrid Deployments](https://technet.microsoft.com/en-us/library/jj200581(v=exchg.150).aspx)
 - [September 2016 Cumulative Update Release](https://blogs.technet.microsoft.com/exchange/2016/09/20/released-september-2016-quarterly-exchange-updates/) 
 - [On-Premises Architectural Requirements for the REST API](https://blogs.technet.microsoft.com/exchange/2016/09/26/on-premises-architectural-requirements-for-the-rest-api/)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/hybrid-rest-support.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

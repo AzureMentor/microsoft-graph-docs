@@ -19,7 +19,7 @@ To create a OneNote page, you send a POST request to a *pages* endpoint. For exa
 Send the HTML that defines the page in the message body. If the request is successful, Microsoft Graph returns a 201 HTTP status code.
 
 
-> **Note:**
+> [!NOTE]
 > To learn about the POST requests you can send to create sections, section groups, and notebooks, see our [interactive REST reference](https://dev.onenote.com/docs).
 
 
@@ -70,7 +70,7 @@ The following rules apply when using the *sectionName* parameter to create a pag
 
 Because sections are created if they don't exist, it's safe to use this call with every page your app creates. Users might rename sections, but the API will create a new section with the section name that you supply. 
 
-> **Note:**
+> [!NOTE]
 > The links returned by the API for pages in a renamed section will still reach those older pages. 
 
 
@@ -106,7 +106,7 @@ Content-Type: application/xhtml+xml
 
 If you're sending binary data, you must use a [multipart request](#example-request). 
 
-> **Note:**
+> [!NOTE]
 > To simplify programming and consistency in your app, you can use multipart requests to create all pages. It's a good idea to use a library to construct multipart messages. This reduces the risk of creating malformed payloads.
 
 
@@ -270,3 +270,12 @@ For more information about permission scopes and how they work, see [Microsoft G
 - [OneNote GitHub repos](https://go.microsoft.com/fwlink/?LinkID=390178)  
 
 
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/onenote-create-page.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

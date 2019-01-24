@@ -18,7 +18,8 @@ For this scenario, we're going to show you how to:
 3. Change the user's roaming profile information (the open extension value).
 4. Delete the user's roaming profile information.
 
->**Note:** This topic shows you how to add, read, update and delete open extensions on a *user* resource.  These methods are also supported for 
+> [!NOTE]
+> This topic shows you how to add, read, update and delete open extensions on a *user* resource.  These methods are also supported for 
 the *administrativeUnit*, *contact*, *device*, *event*, *group*, *group event*, *group post* and *organizaton* resource types.  
 Simply update the example requests below using any of those resource types. The responses shown in the examples below may be truncated for brevity. 
 
@@ -84,7 +85,8 @@ Content-length: 420
     ]
 }
 ```
->**Note:** If you have multiple extensions, you can filter on the *id* to get the extension that you are interested in.
+> [!NOTE]
+> If you have multiple extensions, you can filter on the *id* to get the extension that you are interested in.
 
 ## 3. Change roaming profile information
 The user may choose to change their roaming profile information.  This update can be done with a ```PATCH``` on the open extension value. 
@@ -127,3 +129,12 @@ HTTP/1.1 204 No content
 - [Get open extension](/graph/api/opentypeextension-get?view=graph-rest-1.0)
 - [Update open extension](/graph/api/opentypeextension-update?view=graph-rest-1.0)
 - [Delete open extension](/graph/api/opentypeextension-delete?view=graph-rest-1.0)
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/extensibility-open-users.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

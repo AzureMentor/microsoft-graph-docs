@@ -81,7 +81,8 @@ Content-type: application/json
 }
 ```
 
->**Note:** The `members@delta` property is included in the first group object - TestGroup1 - and contains the two current members of the group. TestGroup2 does not contain that property because the group does not have any members.
+> [!NOTE]
+> The `members@delta` property is included in the first group object - TestGroup1 - and contains the two current members of the group. TestGroup2 does not contain that property because the group does not have any members.
 
 ## nextLink request
 
@@ -242,7 +243,8 @@ Some things to note about the example response above:
 
 The `members@delta` property is included in group objects by default, when the `$select` query parameter has not been specified, or when the `$expand=members` parameter is explicitly specified. For groups with many members it is possible that all members cannot fit into a single response; in this section we describe the pattern you should implement to handle such cases.
 
->**Note:** This pattern applies to both the initial retrieval of group state as well as to subsequent calls to get delta changes.
+> [!NOTE]
+> This pattern applies to both the initial retrieval of group state as well as to subsequent calls to get delta changes.
 
 Let's assume you are executing the following delta query - either to capture the initial full state of groups, or later on to get delta changes:
 
@@ -330,3 +332,12 @@ We recommend the following best practices to correctly handle this pattern:
 
 ## See also
 [Microsoft Graph delta query](delta-query-overview.md) overview.
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/delta-query-groups.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

@@ -13,7 +13,8 @@ Security data accessible via the Microsoft Graph Security API is sensitive and p
 The Microsoft Graph Security API supports two types of authorization:
 
 - **Application-level authorization** - There is no signed-in user (for example, a SIEM scenario). The permissions granted to the application determine authorization. 
-    >**Note:** This option can also support cases where Role-Based Access Control (RBAC) is managed by the application.
+    > [!NOTE]
+    > This option can also support cases where Role-Based Access Control (RBAC) is managed by the application.
 - **User delegated authorization** - A user who is a member of the Azure AD tenant is signed in. The user must be a member of an Azure AD Limited Admin role - either Security Reader or Securty Administrator - in addition to the application having been granted the required permissions.
 
 If you're calling the Microsoft Graph Security API from Graph Explorer:
@@ -21,7 +22,8 @@ If you're calling the Microsoft Graph Security API from Graph Explorer:
 - The Azure AD tenant admin must explicitly grant consent for the requested permissions to the Graph Explorer application.
 - The user must be a member of the Security Reader Limited Admin role in Azure AD (either Security Reader or Security Administrator).
 
->**Note**: Graph Explorer does not support application-level authorization.
+> [!NOTE]
+> Graph Explorer does not support application-level authorization.
 
 If you're calling the Microsoft Graph Security API from a custom or your own application:
 
@@ -53,7 +55,8 @@ For example, assume that you have an application, two Azure AD tenants, **T1** a
 - When users in tenant **T1** get an Azure AD token for the application, it only contains permission **P1**. Permissions granted to an application are recorded as snapshots of what was granted - they *do not change automatically* after the application registration (permission) changes.
 - The admin of tenant **T2** grants permissions **P1** and **P2** to the application. Now, when users in tenant **T2** get an Azure AD token for the application, the token will contain permissions **P1** and **P2**.
 
->**Note**: The Azure AD tokens for the application in tenant **T1** and the application in tenant **T2** contain different permissions, because each tenant admin has granted different permissions to the application.
+> [!NOTE]
+> The Azure AD tokens for the application in tenant **T1** and the application in tenant **T2** contain different permissions, because each tenant admin has granted different permissions to the application.
 
 - To make the application work again in tenant **T1**, the admin of tenant **T1** must explicitly grant permissions **P1** and **P2** to the application.
 
@@ -68,7 +71,8 @@ To register an application to the Azure AD v2.0 endpoint, you'll need:
 To register your application:
 
 1. Go to https://apps.dev.microsoft.com/ and sign in.
-    >**Note**: You don't have to be a tenant admin. You will be redirected to the **My applications** list.
+    > [!NOTE]
+    > You don't have to be a tenant admin. You will be redirected to the **My applications** list.
 2. Choose **Add an app**, and enter an **Application Name** to create a new application.
 3. On the registration page for the new application, choose **Add Platform** > **Web**. In the **Redirect URL** field, enter the redirect URL.
 4. In the **Microsoft Graph Permissions** section, under **Delegated Permissions**, choose **Add**. In the dialog box, choose the required permissions. For a list of permissions, see [Security permissions](permissions-reference.md#security-permissions).
@@ -103,13 +107,15 @@ To grant the permissions:
 - In a web browser, go to this URL, and sign in as a tenant administrator. The dialog box shows the list of permission the application requires, as specified in the application registration portal. 
 Choose **OK** to grant the application these permissions.
 
-> **Note:** This step grants permissions to the application - not to users. This means that all users belonging to the Azure AD tenant that use this application will be granted these permissions - even non-admin users.
+> [!NOTE]
+> This step grants permissions to the application - not to users. This means that all users belonging to the Azure AD tenant that use this application will be granted these permissions - even non-admin users.
 
 ## Assign Azure AD roles to users
 
 After an application is granted permissions, everyone with access to the application (that is, members of the Azure AD tenant) will receive the granted permissions. To further protect sensitive security data, the Microsoft Graph Security API also requires users to be assigned the Azure AD **Security Reader** role. For details, see [Assigning administrator roles](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-assign-admin-roles-azure-portal) and [Assign a user to adminstrator roles](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-assign-role-azure-portal).
 
->**Note:** You must be a tenant admin to perform this step.
+> [!NOTE]
+> You must be a tenant admin to perform this step.
 
 To assign roles to users:
 
@@ -146,13 +152,15 @@ For applications that don't use any of the existing libraries, see [Get access o
 
 If you use OpenId Connect library, see [Authenticate using Azure AD and OpenID Connect](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/authenticate) and call `app.UseOpenIdConnectAuthentication()`.
 
->**Note:** If you're requesting user delegated authentication tokens, the parameter for the library is **Requested Scopes**. Use User.Read for this parameter instead of what the registered application requires. The **Requested Scopes** parameter does NOT affect the permissions contained in the returned authentication tokens. These are determined by the permissions that the tenant admin granted the application.
+> [!NOTE]
+> If you're requesting user delegated authentication tokens, the parameter for the library is **Requested Scopes**. Use User.Read for this parameter instead of what the registered application requires. The **Requested Scopes** parameter does NOT affect the permissions contained in the returned authentication tokens. These are determined by the permissions that the tenant admin granted the application.
 
 For example, if you're using the .NET MSAL library, call the following:
 
 `var accessToken = (await client.AcquireTokenAsync(scopes)).AccessToken;`
 
->**Note:** This example should use the least privileged permission, such as User.Read. However, the returned access token can contain permissions that were granted by the tenant admin for the current user tenant, such as User.Read.All or User.ReadWrite.All.
+> [!NOTE]
+> This example should use the least privileged permission, such as User.Read. However, the returned access token can contain permissions that were granted by the tenant admin for the current user tenant, such as User.Read.All or User.ReadWrite.All.
 
 A token (string) is returned by Azure AD that contains your authentication information and the permissions required by the application. Assign this token to the HTTP header as a bearer token, as shown in the following example.
 
@@ -166,3 +174,12 @@ To view claims contained in the returned token, use NuGet library System.Identit
 `var securityToken = tokenHandler.ReadToken(accessToken) as JwtSecurityToken;`
 
 The response from Microsoft Graph contains a header called client-request-id, which is a GUID. If access is denied, please specify this GUID when seeking support at [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Microsoft-Graph-Security-API/ct-p/SecurityGraphAPI), so we can help investigate the cause of this authentication failure.
+
+<!--
+{
+  "type": "#page.annotation",
+  "suppressions": [
+    "Error: /concepts/security-authorization.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !NOTE\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->

@@ -5,7 +5,8 @@ localization_priority: Normal
 ---
 # Working with long running actions (beta)
 
-> **Important:** APIs under the /beta version in Microsoft Graph are in preview and are subject to change. Use of these APIs in production applications is not supported.
+> [!IMPORTANT]
+> APIs under the /beta version in Microsoft Graph are in preview and are subject to change. Use of these APIs in production applications is not supported.
 
 Some API responses require indeterminate time to complete.
 Instead of waiting until the action is complete before returning a response, Microsoft Graph may use a long running actions pattern.
@@ -151,16 +152,17 @@ The same [permissions](./permissions-reference.md) that are required to perform 
 
 
 
-<!-- {
+<!--
+{
   "type": "#page.annotation",
   "description": "Monitor the progress of long-running actions in the API.",
   "keywords": "monitor,long,running,operation,action",
   "section": "documentation",
+  "tocPath": "Concepts/Long running actions",
   "suppressions": [
-    "Error: lro-check-status:
-      Unable to locate a definition for resource type: microsoft.graph.asyncJobStatus",
-    "Error: lro-check-status-complete:
-      Unable to locate a definition for resource type: microsoft.graph.asyncJobStatus"
-  ],
-  "tocPath": "Concepts/Long running actions"
-} -->
+    "Error: lro-check-status:\r\n      Unable to locate a definition for resource type: microsoft.graph.asyncJobStatus",
+    "Error: lro-check-status-complete:\r\n      Unable to locate a definition for resource type: microsoft.graph.asyncJobStatus",
+    "Error: /concepts/long-running-actions-overview.md:\r\n      Exception processing links.\r\n    System.ArgumentException: Link Definition was null. Link text: !IMPORTANT\r\n      at ApiDoctor.Validation.DocFile.get_LinkDestinations()\r\n      at ApiDoctor.Validation.DocSet.ValidateLinks(Boolean includeWarnings, String[] relativePathForFiles, IssueLogger issues, Boolean requireFilenameCaseMatch, Boolean printOrphanedFiles)"
+  ]
+}
+-->
