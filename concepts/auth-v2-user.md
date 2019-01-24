@@ -7,20 +7,20 @@ ms.prod: "microsoft-identity-platform"
 ---
 
 # Get access on behalf of a user
-To use Microsoft Graph to read and write resources on behalf of a user, your app must get an access token from Azure AD and attach the token to requests that it sends to Microsoft Graph. The exact authentication flow that you will use to get access tokens will depend on the kind of app you are developing and whether you want to use OpenID Connect to sign the user in to your app. One common flow used by native and mobile apps and also by some Web apps is the OAuth 2.0 authorization code grant flow. In this topic, we will walk through an example using this flow. 
+To use Microsoft Graph to read and write resources on behalf of a user, your app must get an access token from Azure AD and attach the token to requests that it sends to Microsoft Graph. The exact authentication flow that you will use to get access tokens will depend on the kind of app you are developing and whether you want to use OpenID Connect to sign the user in to your app. One common flow used by native and mobile apps and also by some Web apps is the OAuth 2.0 authorization code grant flow. In this topic, we will walk through an example using this flow.
 
 ## Authentication and Authorization steps
 
 The basic steps required to use the OAuth 2.0 authorization code grant flow to get an access token from the Azure AD v2.0 endpoint are:
 
-1. Register your app with Azure AD. 
-2. Get authorization. 
+1. Register your app with Azure AD.
+2. Get authorization.
 3. Get an access token.
 4. Call Microsoft Graph with the access token.
 5. Use a refresh token to get a new access token.
 
 ## 1. Register your app
-To use the Azure v2.0 endpoint, you must register your app at the [Microsoft App Registration Portal](https://apps.dev.microsoft.com/). You can use either a Microsoft account or a work or school account to register an app. 
+To use the Azure v2.0 endpoint, you must register your app at the [Microsoft App Registration Portal](https://apps.dev.microsoft.com/). You can use either a Microsoft account or a work or school account to register an app.
 
 The following screenshot shows an example Web app registration.
 ![Web app registration with password and Implicit Grant.](./images/v2-web-registration.png)
@@ -28,7 +28,7 @@ The following screenshot shows an example Web app registration.
 To configure an app to use the OAuth 2.0 authorization code grant flow, you'll need to save the following values when registering the app:
 
 - The Application ID assigned by the app registration portal.
-- An Application Secret, either a password or a public/private key pair (certificate). This is not required for native apps. 
+- An Application Secret, either a password or a public/private key pair (certificate). This is not required for native apps.
 - A Redirect URL for your app to receive responses from Azure AD.
 
 For steps on how to configure an app using the Microsoft App Registration Portal, see [Register your app](./auth-register-app-v2.md).
@@ -36,10 +36,10 @@ For steps on how to configure an app using the Microsoft App Registration Portal
 ## 2. Get authorization
 The first step to getting an access token for many OpenID Connect and OAuth 2.0 flows is to redirect the user to the Azure AD v2.0 `/authorize` endpoint. Azure AD will sign the user in and ensure their consent for the permissions your app requests. In the authorization code grant flow, after consent is obtained, Azure AD will return an authorization_code to your app that it can redeem at the Azure AD v2.0 `/token` endpoint for an access token.
 
-### Authorization request 
-The following shows an example request to the `/authorize` endpoint. 
+### Authorization request
+The following shows an example request to the `/authorize` endpoint.
 
-With the Azure AD v2.0 endpoint, permissions are requested using the `scope` parameter. In this example, the Microsoft Graph permissions requested are for _User.Read_ and _Mail.Read_, which will allow the app to read the profile and mail of the signed-in user. The _offline\_access_ permission is requested so that the app can get a refresh token, which it can use to get a new access token when the current one expires. 
+With the Azure AD v2.0 endpoint, permissions are requested using the `scope` parameter. In this example, the Microsoft Graph permissions requested are for _User.Read_ and _Mail.Read_, which will allow the app to read the profile and mail of the signed-in user. The _offline\_access_ permission is requested so that the app can get a refresh token, which it can use to get a new access token when the current one expires.
 
 ```
 // Line breaks for legibility only
@@ -64,17 +64,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!IMPORTANT]
 > Microsoft Graph exposes two kinds of permissions: application and delegated. For apps that run with a signed-in user, you request delegated permissions in the `scope` parameter. These permissions delegate the privileges of the signed-in user to your app, allowing it to act as the signed-in user when making calls to Microsoft Graph. For more detailed information about the permissions available through Microsoft Graph, see the [Permissions reference](./permissions-reference.md).
- 
+
 ### Consent experience
 
-At this point, the user will be asked to enter their credentials to authenticate with Azure AD. The v2.0 endpoint will also ensure that the user has consented to the permissions indicated in the `scope` query parameter.  If the user has not consented to any of those permissions and if an administrator has not previously consented on behalf of all users in the organization, Azure AD will ask the user to consent to the required permissions.  
+At this point, the user will be asked to enter their credentials to authenticate with Azure AD. The v2.0 endpoint will also ensure that the user has consented to the permissions indicated in the `scope` query parameter.  If the user has not consented to any of those permissions and if an administrator has not previously consented on behalf of all users in the organization, Azure AD will ask the user to consent to the required permissions.
 
 Here is an example of the consent dialog presented for a Microsoft account:
 
 ![Consent dialog for Microsoft account](./images/v2-consumer-consent.png)
 
 > **Try** If you have a Microsoft account or an Azure AD work or school account, you can try this for yourself by clicking on the link below. After signing in, your browser should be redirected to `https://localhost/myapp/` with a `code` in the address bar.
-> 
+>
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=offline_access%20user.read%20mail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 ### Authorization response
@@ -120,7 +120,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_secret |required for web apps |The application secret that you created in the app registration portal for your app.  It should not be used in a native app, because client_secrets cannot be reliably stored on devices.  It is required for web apps and web APIs, which have the ability to store the client_secret securely on the server side. |
 
 ### Token response
-Although the access token is opaque to your app, the response contains a list of the permissions that the access token is good for in the `scope` parameter. 
+Although the access token is opaque to your app, the response contains a list of the permissions that the access token is good for in the `scope` parameter.
 
 ```
 {
@@ -144,7 +144,7 @@ Although the access token is opaque to your app, the response contains a list of
 Once you have an access token, you can use it to call Microsoft Graph by including it in the `Authorization` header of a request. The following request gets the profile of the signed-in user.
 
 ```
-GET https://graph.microsoft.com/v1.0/me 
+GET https://graph.microsoft.com/v1.0/me
 Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 Host: graph.microsoft.com
 
@@ -229,21 +229,21 @@ A successful token response will look similar to the following.
 | refresh_token |A new OAuth 2.0 refresh token. You should replace the old refresh token with this newly acquired refresh token to ensure your refresh tokens remain valid for as long as possible. |
 
 ## Supported app scenarios and additional resources
-You can call Microsoft Graph on behalf of a user from the following kinds of apps: 
+You can call Microsoft Graph on behalf of a user from the following kinds of apps:
 
-- Native/Mobile apps 
+- Native/Mobile apps
 - Web apps
 - Single page apps (SPA)
-- Back-end Web APIs: For example, in scenarios where a client app, like a native app, implements functionality in a Web API back end. With the Azure AD v2.0 endpoint, both the client app and the back-end Web API must have the same Application ID. 
+- Back-end Web APIs: For example, in scenarios where a client app, like a native app, implements functionality in a Web API back end. With the Azure AD v2.0 endpoint, both the client app and the back-end Web API must have the same Application ID.
 
-For more information about supported app types with the Azure AD v2.0 endpoint, see [Types of apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-flows).
+For more information about supported app types with the Azure AD v2.0 endpoint, see [Types of apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-flows). Also see [foo](..\foo.md).
 
 > [!NOTE]
 > Calling Microsoft Graph from a [standalone web API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-limitations#restrictions-on-app-types) is not currently supported by the Azure AD v2.0 endpoint. For this scenario, you need to use the Azure AD endpoint.
 
 For more information about getting access to Microsoft Graph on behalf of a user from the Azure AD v2.0 endpoint:
 
-- For links to protocol documentation and getting started articles for different kinds of apps, see the [Azure AD v2.0 endpoint documentation](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview). 
+- For links to protocol documentation and getting started articles for different kinds of apps, see the [Azure AD v2.0 endpoint documentation](https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview).
 - For detailed explanations of authentication flows, see [v2.0 protocols](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols).
 - For more information about recommended Microsoft and third-party authentication libraries and server middleware for Azure AD v2.0, see [Azure Active Directory v2.0 authentication libraries](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
 
@@ -254,7 +254,7 @@ There are several differences between using the Azure AD endpoint and the Azure 
 - Your app will require a different application ID (client ID) for each platform.
 - If your app is a multi-tenant app, you must explicitly configure it to be multi-tenant at the [Azure portal](https://portal.azure.com).
 - With the Azure AD endpoint, all permissions that your app needs must be configured by the developer. The Azure AD endpoint does not support dynamic (incremental) consent.
-- The Azure AD endpoint uses a `resource` parameter in authorization and token requests to specify the resource, such as Microsoft Graph, for which it wants permissions. The endpoint does not support the `scope` parameter. 
+- The Azure AD endpoint uses a `resource` parameter in authorization and token requests to specify the resource, such as Microsoft Graph, for which it wants permissions. The endpoint does not support the `scope` parameter.
 - The Azure AD endpoint does not expose a specific endpoint for administrator consent. Instead apps use the `prompt=admin_consent` parameter in the authorization request to obtain administrator consent for an organization. For more information, see **Triggering the Azure AD consent framework at runtime** in [Integrating applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
 For more information about getting access to Microsoft Graph on behalf of a user from the Azure AD endpoint:
