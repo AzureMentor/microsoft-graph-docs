@@ -9,7 +9,7 @@ ms.prod: "microsoft-identity-platform"
 # Call Microsoft Graph from a Cloud Solution Provider application
 
 > [!NOTE]
->  This topic applies **only** to Microsoft Cloud Solution Provider (CSP) application developers. The [Microsoft Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/cloud-solution-provider) program enables Microsoft’s partners to resell and manage Microsoft Online services to customers.
+> This topic applies **only** to Microsoft Cloud Solution Provider (CSP) application developers. The [Microsoft Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/cloud-solution-provider) program enables Microsoft’s partners to resell and manage Microsoft Online services to customers.
 
 This topic describes how to enable application access to partner-managed customer data via Microsoft Graph using either the [authorization code grant flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code) or the [service to service client credentials flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-service-to-service).
 
@@ -26,7 +26,7 @@ Additionally, as a partner developer, you can build a **partner-managed app** to
 An application is viewed as *partner-managed* when it is granted elevated permissions to access your customers' data.
 
 > [!NOTE]
->  Partner-managed apps can *only* be configured on Partner tenants, and in order to manage customer tenant resources, partner-managed apps **must** be configured as **multi-tenant applications**.
+> Partner-managed apps can *only* be configured on Partner tenants, and in order to manage customer tenant resources, partner-managed apps **must** be configured as **multi-tenant applications**.
 
 ### Register and configure a multi-tenant app
 
@@ -103,11 +103,11 @@ CSP customer engagement is currently limited to a single region. Partner-managed
 
 When you create a new customer using the [Partner Center API](https://partnercenter.microsoft.com/en-us/partner/developer), a new customer tenant gets created. Additionally, a partner relationship also gets created, which makes you the partner of record for this new customer tenant. This partner relationship can take up to 3 minutes to propagate to the new customer tenant. If your app calls Microsoft Graph straight after creation, your app will likely receive an access denied error. A similar delay may be experienced when an existing customer accepts your invitation. This is because pre-consent relies on the partner relationship being present in the customer tenant.
 
-To avoid this problem, we recommend that your partner app should should wait **three minutes** after customer creation before calling Azure AD to acquire a token (to call Microsoft Graph). This should cover most cases. 
+To avoid this problem, we recommend that your partner app should should wait **three minutes** after customer creation before calling Azure AD to acquire a token (to call Microsoft Graph). This should cover most cases.
 However, if after waiting three minutes you still recieve an authorization error, please wait an additional 60 seconds and try again.
 
 > [!NOTE]
->  On the retry, you must acquire a new access token from Azure AD, before calling Microsoft Graph.  Calling Microsoft Graph with the access token you already have will not work, because the access token is good for an hour and won’t contain the pre-consented permission claims.
+> On the retry, you must acquire a new access token from Azure AD, before calling Microsoft Graph.  Calling Microsoft Graph with the access token you already have will not work, because the access token is good for an hour and won’t contain the pre-consented permission claims.
 
 <!--
 {
